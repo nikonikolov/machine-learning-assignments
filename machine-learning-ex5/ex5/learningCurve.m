@@ -53,7 +53,20 @@ error_val   = zeros(m, 1);
 
 % ---------------------- Sample Solution ----------------------
 
-
+for i = 1:m
+    % Compute theta parameters using trainLinearReg()
+    % X(1:i, :) selects only the first i rows, i.e. only the first i
+    % training examples
+    theta = trainLinearReg(X(1:i, :), y(1:i), lambda);
+    
+    % Compute training error - no regularization
+    err_train = linearRegCostFunction(X(1:i, :), y(1:i), theta, 0);
+    error_train(i) = err_train(1);
+    
+    % Compute cross validation error - no regularization
+    err_val = linearRegCostFunction(Xval, yval, theta, 0);
+    error_val(i) = err_val(1);
+end
 
 
 

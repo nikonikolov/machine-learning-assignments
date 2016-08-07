@@ -19,19 +19,18 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+% compute h_theta(x)
+Htheta = X*theta;
+
+% compute regularized cost - scalar
+J = ( sum((Htheta-y).^2) + lambda*(sum(theta(2:end).^2)) ) / (2*m);
 
 
-
-
-
-
-
-
-
+% compute regularized gradient - column vector
+grad = (transpose(X)*(Htheta-y) + lambda*vertcat(0, theta(2:end)) )/m;
 
 
 % =========================================================================
 
-grad = grad(:);
 
 end

@@ -23,15 +23,14 @@ m = length(y); % number of training examples
 ThetaX = transpose(theta)*transpose(X);     % row vector
 Htheta = transpose(sigmoid(ThetaX));        % column vector
 theta_SQ = theta.^2;
-ltheta = length(theta);
 
 % J results as a vector
 J = -y.*log(Htheta) - (1-y).*log(1-Htheta);
 
 % J is now a scalar
-J = 1/m*(sum(J) + lambda/2*(sum(theta_SQ(2:ltheta))));
+J = (sum(J) + lambda/2*(sum(theta_SQ(2:end))))/m;
 
-grad = 1/m*(transpose(X)*(Htheta-y) + lambda*vertcat(0, theta(2:ltheta)));     % column vector
+grad = (transpose(X)*(Htheta-y) + lambda*vertcat(0, theta(2:end)))/m;     % column vector
 
 % =============================================================
 

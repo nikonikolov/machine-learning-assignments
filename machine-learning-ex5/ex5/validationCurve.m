@@ -40,13 +40,21 @@ error_val = zeros(length(lambda_vec), 1);
 %
 
 
-
-
-
-
-
-
-
+for i = 1:length(lambda_vec)
+    lambda = lambda_vec(i);
+    
+    % Train the model using this lambda
+    theta = trainLinearReg(X, y, lambda);
+    
+    % Compute training error
+    err_train = linearRegCostFunction(X, y, theta, 0);
+    error_train(i) = err_train(1);
+    
+    % Compute cross validation error - no regularization
+    err_val = linearRegCostFunction(Xval, yval, theta, 0);
+    error_val(i) = err_val(1);
+          
+end
 
 % =========================================================================
 

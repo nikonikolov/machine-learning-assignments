@@ -32,9 +32,9 @@ Htheta = transpose(sigmoid(ThetaX));        % column vector
 J = -y.*log(Htheta) - (1-y).*log(1-Htheta);
 
 % J is now a scalar
-J = 1/m*sum(J);
+J = sum(J)/m;
 
-grad = 1/m* transpose(X)*(Htheta - y);     % column vector
+grad = transpose(X)*(Htheta - y)/m;     % column vector
 
 
 
