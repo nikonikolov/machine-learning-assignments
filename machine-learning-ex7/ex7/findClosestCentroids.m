@@ -22,6 +22,18 @@ idx = zeros(size(X,1), 1);
 %
 
 
+for i=1:size(X,1)
+    closest_centroid = 1;
+    closest_dist = inf('double');
+    for j=1:length(centroids)
+        current_dist = pdist2(X(i,:), centroids(j,:));
+        if current_dist < closest_dist
+            closest_dist = current_dist;
+            closest_centroid = j;
+        end
+    end
+   idx(i) = closest_centroid; 
+end
 
 
 
