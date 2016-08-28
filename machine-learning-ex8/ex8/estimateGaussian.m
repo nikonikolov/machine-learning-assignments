@@ -22,13 +22,13 @@ sigma2 = zeros(n, 1);
 %
 
 
+mu = mean(X)';
 
+x_mean_norm = bsxfun(@minus, X, mu');
 
+sigma2 = mean(x_mean_norm.^2)';
 
-
-
-
-
+%sigma2 = mean(x_mean_norm.^2);
 
 % =============================================================
 
